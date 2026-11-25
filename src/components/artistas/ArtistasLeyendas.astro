@@ -1,0 +1,348 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'artistas-leyendas' } = Astro.props;
+
+const artistas = [
+  {
+    nombre: 'Mark Knopfler',
+    banda: 'Dire Straits',
+    instrumento: '1961 Stratocaster® Fiesta Red',
+    foto: '/imagenes/artistas/mark-knopfler.jpg',
+    categoria: 'leyenda',
+    tonoTag: 'Fingerstyle Master',
+    cita: 'Tocar con los dedos me da un control directo de la dinámica que ninguna púa puede igualar.',
+  },
+  {
+    nombre: 'Jon Bon Jovi & Richie Sambora',
+    banda: 'Bon Jovi',
+    instrumento: 'Custom Stratocasters & Telecasters',
+    foto: '/imagenes/artistas/bon-jovi.jpg',
+    categoria: 'leyenda',
+    tonoTag: 'Arena Rock Tone',
+    cita: 'Una guitarra Fender tiene que aguantar 100 shows seguidos sin perder una sola gota de tono.',
+  },
+  {
+    nombre: 'David Gilmour',
+    banda: 'Pink Floyd',
+    instrumento: 'The Black Strat®',
+    foto: '/imagenes/artistas/david-gilmour.jpg',
+    categoria: 'leyenda',
+    tonoTag: 'Sustain Infinito',
+    cita: 'Mis dedos son los que hacen el sonido; la Stratocaster simplemente no se interpone en el camino.',
+  },
+  {
+    nombre: 'Jimi Hendrix',
+    banda: 'The Experience',
+    instrumento: '1968 Stratocaster® Olympic White',
+    foto: '/imagenes/artistas/jimi-hendrix.jpg',
+    categoria: 'leyenda',
+    tonoTag: 'Psicodelia Eléctrica',
+    cita: 'A veces quiero quemar mi guitarra porque la música que tengo dentro me quema a mí.',
+  },
+  {
+    nombre: 'Stevie Ray Vaughan',
+    banda: 'Double Trouble',
+    instrumento: 'Stratocaster® "Number One" 1963',
+    foto: '/imagenes/artistas/stevie-ray-vaughan.jpg',
+    categoria: 'leyenda',
+    tonoTag: 'Texas Blues',
+    cita: 'Si no pones todo tu corazón en cada nota que tocas, mejor no toques nada.',
+  },
+  {
+    nombre: 'Eric Clapton',
+    banda: 'Slowhand',
+    instrumento: 'Stratocaster® "Blackie"',
+    foto: '/imagenes/artistas/eric-clapton.jpg',
+    categoria: 'signature',
+    tonoTag: 'Slowhand Blues',
+    cita: 'La Stratocaster es la herramienta más versátil que jamás haya caído en mis manos.',
+  },
+];
+---
+
+<section id={id} class="seccion-artistas-redonda">
+  <div class="contenedor">
+    <header class="header-artistas">
+      <span class="pildora-roja-borde">COMUNIDAD &bull; FENDER FAMILY</span>
+      <h1 class="titulo-artistas">Artistas de la Familia Fender</h1>
+      <p class="bajada-artistas">
+        De las notas punteadas de Mark Knopfler a los estadios llenos de Bon Jovi: leyendas que encontraron su voz en Fender.
+      </p>
+
+      <div class="tabs-artistas-pildora">
+        <button class="tab-btn activo" data-filtro="todos">TODOS LOS ARTISTAS</button>
+        <button class="tab-btn" data-filtro="leyenda">LEYENDAS DEL ROCK</button>
+        <button class="tab-btn" data-filtro="signature">EDICIONES SIGNATURE</button>
+      </div>
+    </header>
+
+    <div class="grid-artistas-curvos">
+      {
+        artistas.map((art) => (
+          <article class="tarjeta-art-redonda" data-cat={art.categoria}>
+            <!-- Marco de Fotografía sin ninguna capa que lo tape -->
+            <div class="marco-foto-curvo">
+              <img
+                src={art.foto}
+                alt={art.nombre}
+                class="foto-directa"
+                loading="lazy"
+              />
+              <span class="pildora-tono-roja">{art.tonoTag}</span>
+            </div>
+
+            <div class="cuerpo-art">
+              <span class="banda-tag">{art.banda}</span>
+              <h2 class="nombre-artista">{art.nombre}</h2>
+              <p class="instrumento-tag">{art.instrumento}</p>
+
+              <blockquote class="cita-pildora-caja">
+                "{art.cita}"
+              </blockquote>
+            </div>
+
+            <div class="pie-art">
+              <a href="/productos" class="btn-gear-rojo">
+                <span>VER GUITARRAS DEL ARTISTA</span>
+                <span class="flecha">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .seccion-artistas-redonda {
+    width: 100%;
+    background-color: #0F0B09;
+    padding: 5rem 0 6rem 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .header-artistas {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  .pildora-roja-borde {
+    display: inline-block;
+    padding: 0.45rem 1.15rem;
+    border-radius: 9999px;
+    background-color: #1A130F;
+    border: 1px solid #E11D1D;
+    color: #E11D1D;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+
+  .titulo-artistas {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: #F5EADB;
+    margin-bottom: 1rem;
+  }
+
+  .bajada-artistas {
+    font-size: 1.05rem;
+    color: #BFA997;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .tabs-artistas-pildora {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 0.7rem 1.4rem;
+    border-radius: 9999px;
+    background-color: #1A130F;
+    border: 1px solid #453023;
+    color: #F5EADB;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tab-btn:hover,
+  .tab-btn.activo {
+    background-color: #E11D1D;
+    border-color: #E11D1D;
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(225, 29, 29, 0.4);
+  }
+
+  .grid-artistas-curvos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .tarjeta-art-redonda {
+    background-color: #1A130F;
+    border: 1px solid #453023;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .tarjeta-art-redonda:hover {
+    transform: translateY(-5px);
+    border-color: #E11D1D;
+    box-shadow: 0 14px 35px rgba(225, 29, 29, 0.25);
+  }
+
+  /* Marco de Fotografía */
+  .marco-foto-curvo {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: #241A14;
+    border-bottom: 1px solid #453023;
+    overflow: hidden;
+  }
+
+  /* La imagen ahora se muestra directamente sin nada encima */
+  .foto-directa {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .tarjeta-art-redonda:hover .foto-directa {
+    transform: scale(1.05);
+  }
+
+  .pildora-tono-roja {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    z-index: 3;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    background-color: #E11D1D;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .cuerpo-art {
+    padding: 1.75rem;
+  }
+
+  .banda-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #C27E38;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .nombre-artista {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #F5EADB;
+    margin-bottom: 0.35rem;
+  }
+
+  .instrumento-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #BFA997;
+    margin-bottom: 1.25rem;
+  }
+
+  .cita-pildora-caja {
+    background-color: #0F0B09;
+    border-left: 3px solid #E11D1D;
+    padding: 0.85rem 1rem;
+    border-radius: 0 12px 12px 0;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: #F5EADB;
+    line-height: 1.5;
+  }
+
+  .pie-art {
+    padding: 1.25rem 1.75rem;
+    border-top: 1px solid #453023;
+  }
+
+  .btn-gear-rojo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #F5EADB;
+    transition: color 0.2s ease;
+  }
+
+  .btn-gear-rojo:hover {
+    color: #E11D1D;
+  }
+
+  @media (max-width: 950px) {
+    .grid-artistas-curvos {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .grid-artistas-curvos {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const botones = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.tarjeta-art-redonda');
+
+  botones.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      botones.forEach((b) => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      const f = btn.getAttribute('data-filtro');
+
+      cards.forEach((c) => {
+        const cat = c.getAttribute('data-cat');
+        if (f === 'todos' || cat === f) {
+          (c as HTMLElement).style.display = 'flex';
+        } else {
+          (c as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>   

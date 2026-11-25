@@ -1,0 +1,260 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const guitarras = [
+  {
+    modelo: "VOLTARA V100",
+    tipo: "electrica",
+    badge: "MÁS VERSÁTIL",
+    descripcion:
+      "Guitarra eléctrica versátil y expresiva. Diseñada con maderas seleccionadas para adaptarse con soltura a ritmos dinámicos, saturaciones profundas y solos líricos.",
+    foto: "/imagenes/stratocaster.jpg",
+    categoriaTxt: "Eléctrica de Escenario",
+  },
+  {
+    modelo: "VOLTARA V200",
+    tipo: "electrica",
+    badge: "DISEÑO CONTEMPORÁNEO",
+    descripcion:
+      "Guitarra eléctrica de diseño contemporáneo. Líneas audaces, mástil de perfil veloz y afinación sólida para géneros modernos de alta exigencia técnica.",
+    foto: "/imagenes/telecaster.jpg",
+    categoriaTxt: "Eléctrica de Vanguardia",
+  },
+  {
+    modelo: "VOLTARA A200",
+    tipo: "acustica",
+    badge: "COMPOSICIÓN & ESTUDIO",
+    descripcion:
+      "Guitarra acústica para composición e interpretación. Proyección acústica cálida, balance en frecuencias medias y resonancia rica en matices orgánicos.",
+    foto: "/imagenes/hero-guitarra.jpg",
+    categoriaTxt: "Acústica de Autor",
+  },
+];
+---
+
+<Layout titulo="Guitarras VOLTARA | V100, V200 y A200">
+  <section class="seccion-guitarras">
+    <div class="contenedor">
+      <header class="cabecera">
+        <span class="pildora-tag">CATÁLOGO DE INSTRUMENTOS</span>
+        <h1 class="h1-tit">Guitarras VOLTARA</h1>
+        <p class="bajada">
+          Instrumentos con carácter que traducen cada matiz de tus manos en un sonido memorable.
+        </p>
+
+        <!-- Filtros funcionales -->
+        <div class="filtros-pildora">
+          <button class="btn-f activo" data-filtro="todos">TODAS</button>
+          <button class="btn-f" data-filtro="electrica">ELÉCTRICAS</button>
+          <button class="btn-f" data-filtro="acustica">ACÚSTICAS</button>
+        </div>
+      </header>
+
+      <div class="grid-guitarras" id="grid-guitarras">
+        {
+          guitarras.map((g) => (
+            <article class="tarjeta-guitarra" data-cat={g.tipo}>
+              <div class="marco-foto">
+                <img src={g.foto} alt={g.modelo} class="img-guit" loading="lazy" />
+                <span class="badge-cat">{g.badge}</span>
+              </div>
+
+              <div class="cuerpo-guitarra">
+                <span class="cat-label">{g.categoriaTxt}</span>
+                <h2 class="modelo-nombre">{g.modelo}</h2>
+                <p class="desc-txt">{g.descripcion}</p>
+              </div>
+
+              <div class="pie-card">
+                <a href="/soporte" class="btn-pildora-card">
+                  <span>CONSULTAR & SOPORTE</span>
+                  <span class="flecha">&rarr;</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .seccion-guitarras {
+    padding: 5rem 0 6rem 0;
+    background-color: var(--c-fondo);
+  }
+  .contenedor {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .cabecera {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3.5rem auto;
+  }
+  .pildora-tag {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo);
+    color: var(--c-rojo);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+  .h1-tit {
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    color: var(--c-crema);
+    margin-bottom: 0.75rem;
+  }
+  .bajada {
+    font-size: 1.05rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .filtros-pildora {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .btn-f {
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    color: var(--c-crema);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+  }
+  .btn-f.activo,
+  .btn-f:hover {
+    background-color: var(--c-rojo);
+    border-color: var(--c-rojo);
+    color: #ffffff;
+  }
+
+  .grid-guitarras {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .tarjeta-guitarra {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-curvo);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+  }
+  .tarjeta-guitarra:hover {
+    transform: translateY(-5px);
+    border-color: var(--c-rojo);
+    box-shadow: 0 12px 30px rgba(230, 25, 25, 0.25);
+  }
+  .marco-foto {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: var(--c-tarjeta);
+    border: 1px solid var(--c-borde);
+    margin-bottom: 1.25rem;
+  }
+  .img-guit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .tarjeta-guitarra:hover .img-guit {
+    transform: scale(1.05);
+  }
+  .badge-cat {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #ffffff;
+    background-color: rgba(10, 8, 7, 0.9);
+    border: 1px solid var(--c-borde);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radio-pildora);
+  }
+  .cat-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--c-ambar);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .modelo-nombre {
+    font-size: 1.8rem;
+    color: var(--c-crema);
+    margin: 0.2rem 0 0.5rem 0;
+  }
+  .desc-txt {
+    font-size: 0.9rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .btn-pildora-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-rojo);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    transition: background-color 0.2s ease;
+  }
+  .btn-pildora-card:hover {
+    background-color: var(--c-rojo-oscuro);
+  }
+
+  @media (max-width: 900px) {
+    .grid-guitarras {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const botones = document.querySelectorAll(".btn-f");
+  const cards = document.querySelectorAll(".tarjeta-guitarra");
+
+  botones.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      botones.forEach((b) => b.classList.remove("activo"));
+      btn.classList.add("activo");
+      const filtro = btn.getAttribute("data-filtro");
+
+      cards.forEach((c) => {
+        const cat = c.getAttribute("data-cat");
+        if (filtro === "todos" || cat === filtro) {
+          (c as HTMLElement).style.display = "flex";
+        } else {
+          (c as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>

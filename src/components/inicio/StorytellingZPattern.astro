@@ -1,0 +1,275 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = "storytelling-z-pattern" } = Astro.props;
+---
+
+<section id={id} class="seccion-z">
+  <div class="contenedor">
+    <div class="cabecera-z">
+      <span class="badge-z">CRONOLOGÍA &bull; 1833 A 1959</span>
+      <h2 class="titulo-z">El Origen del Tono Eléctrico</h2>
+      <p class="bajada-z">
+        Dos épocas bisagra que transformaron la artesanía tradicional en el fenómeno cultural de la
+        música moderna.
+      </p>
+    </div>
+
+    <div class="patron-z">
+      <!-- Fila 1: Texto a la Izquierda | Bloque Visual a la Derecha -->
+      <div class="fila-z">
+        <article class="tarjeta-texto">
+          <div class="tag-ano">1833</div>
+          <h3 class="titulo-hito">El inicio de un legado</h3>
+          <p class="desc-hito">
+            Una tradición de luthería y acústica pionera que sentó las bases mecánicas y armónicas
+            que transformaron la construcción de instrumentos para siempre.
+          </p>
+          <div class="datos-hito">
+            <span class="dato-pildora">Artesanía de Taller</span>
+            <span class="dato-pildora">Maderas Tonalmente Viejas</span>
+          </div>
+          <a href="/historia" class="enlace-z">
+            <span>VER HISTORIA COMPLETA</span>
+            <span class="flecha">&rarr;</span>
+          </a>
+        </article>
+
+        <div class="bloque-grafico fondo-lutheria">
+          <div class="grafico-contenido">
+            <span class="grafico-badge">TALLER HISTÓRICO</span>
+            <h4>Precisión de Corte y Ajuste de Almas</h4>
+            <p>
+              La filosofía de Leo Fender: crear instrumentos de trabajo resistentes que cualquier
+              músico pudiera afilar y reparar en la carretera.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fila 2: Bloque Visual a la Izquierda | Texto a la Derecha -->
+      <div class="fila-z invertida">
+        <div class="bloque-grafico fondo-escenario">
+          <div class="grafico-contenido">
+            <span class="grafico-badge rojo">ERA DORADA 1959</span>
+            <h4>La Explosión del Rock and Roll</h4>
+            <p>
+              El nacimiento de la Stratocaster y los amplificadores tweed que marcaron para siempre
+              a Buddy Holly, Jimi Hendrix y Eric Clapton.
+            </p>
+          </div>
+        </div>
+
+        <article class="tarjeta-texto">
+          <div class="tag-ano">1959</div>
+          <h3 class="titulo-hito">Un sonido que definió generaciones</h3>
+          <p class="desc-hito">
+            Instrumentos eléctricos que amplificaron el grito de libertad de toda una generación. El
+            puente flotante sincronizado y los cuerpos ergonómicos cambiaron la historia.
+          </p>
+          <div class="datos-hito">
+            <span class="dato-pildora">Pastillas Alnico Bobinadas</span>
+            <span class="dato-pildora">Mástiles de Arce de una Pieza</span>
+          </div>
+          <a href="/artistas" class="enlace-z">
+            <span>VER ARTISTAS DE LA ÉPOCA</span>
+            <span class="flecha">&rarr;</span>
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .seccion-z {
+    width: 100%;
+    background-color: #0d0d0d;
+    padding: 5rem 0;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .cabecera-z {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  .badge-z {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    background-color: #171513;
+    border: 1px solid #4a4037;
+    color: #f2e6ce;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .titulo-z {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 900;
+    color: #f2e6ce;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .bajada-z {
+    font-size: 1rem;
+    color: #8c7a69;
+    line-height: 1.6;
+  }
+
+  .patron-z {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .fila-z {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: stretch;
+  }
+
+  .tarjeta-texto {
+    background-color: #171513;
+    border: 1px solid #2e2823;
+    border-radius: 4px;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .tag-ano {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #f2e6ce;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .titulo-hito {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #f2e6ce;
+    margin-bottom: 1rem;
+  }
+
+  .desc-hito {
+    font-size: 0.95rem;
+    color: #8c7a69;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .datos-hito {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .dato-pildora {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px;
+    background-color: #0d0d0d;
+    border: 1px solid #4a4037;
+    color: #f2e6ce;
+  }
+
+  .enlace-z {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #f21b1b;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+  }
+
+  .enlace-z:hover {
+    color: #f2e6ce;
+    transform: translateX(4px);
+  }
+
+  /* Bloque gráfico representativo */
+  .bloque-grafico {
+    border-radius: 4px;
+    border: 1px solid #2e2823;
+    padding: 3rem 2.5rem;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fondo-lutheria {
+    background: linear-gradient(135deg, #171513 0%, #30261f 60%, #171513 100%);
+  }
+
+  .fondo-escenario {
+    background: linear-gradient(135deg, #380808 0%, #171513 60%, #0d0d0d 100%);
+  }
+
+  .grafico-contenido {
+    background-color: rgba(13, 13, 13, 0.85);
+    border: 1px solid #4a4037;
+    border-radius: 4px;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .grafico-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #f2e6ce;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .grafico-badge.rojo {
+    color: #f21b1b;
+  }
+
+  .grafico-contenido h4 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #f2e6ce;
+    margin-bottom: 0.5rem;
+  }
+
+  .grafico-contenido p {
+    font-size: 0.85rem;
+    color: #8c7a69;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .fila-z,
+    .fila-z.invertida {
+      grid-template-columns: 1fr;
+    }
+    .fila-z.invertida .bloque-grafico {
+      order: 2;
+    }
+  }
+</style>

@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+
+:root {
+  /* Paleta Oficial VOLTARA */
+  --c-fondo: #0a0807; /* Café espresso casi negro profundo */
+  --c-superficie: #15110e; /* Café espresso tostado */
+  --c-tarjeta: #1e1713; /* Caoba oscuro y cuero vintage */
+  --c-borde: #3b2a20; /* Borde cálido de separación */
+  --c-borde-fuerte: #5c4131; /* Borde destacado */
+
+  /* Acentos de Energía Musical */
+  --c-rojo: #e61919; /* Rojo intenso VOLTARA */
+  --c-rojo-oscuro: #b00e0e; /* Carmesí profundo */
+  --c-ambar: #d9822b; /* Ámbar escenario y calidez */
+
+  /* Textos */
+  --c-crema: #f7efe2; /* Crema marfil editorial */
+  --c-texto-suave: #bfa997; /* Almendra tostada para párrafos */
+
+  /* Tipografías */
+  --font-titulos: "Bebas Neue", Impact, sans-serif;
+  --font-cuerpo: "Montserrat", system-ui, -apple-system, sans-serif;
+
+  /* Geometría orgánica contemporánea */
+  --radio-curvo: 20px;
+  --radio-pildora: 9999px;
+  --radio-circular: 50%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--c-fondo);
+  color: var(--c-crema);
+  font-family: var(--font-cuerpo);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--c-fondo);
+  color: var(--c-crema);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-titulos);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+p,
+span,
+a,
+button,
+input,
+textarea {
+  font-family: var(--font-cuerpo);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

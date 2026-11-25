@@ -1,0 +1,203 @@
+---
+import { sitio } from "../datos/sitio";
+
+const rutaActual = Astro.url.pathname;
+---
+
+<header class="header-voltara">
+  <div class="contenedor-nav">
+    <!-- Logotipo Propio VOLTARA -->
+    <a href="/" class="logo-voltara" title="VOLTARA - Inicio" aria-label="VOLTARA">
+      <span class="logo-v">V</span>
+      <span class="logo-nombre">VOLTARA</span>
+    </a>
+
+    <!-- Navegación de 6 Páginas en Píldora -->
+    <nav class="nav-escritorio" aria-label="Navegación principal">
+      {
+        sitio.menu.map((item) => {
+          const esActivo =
+            item.ruta === "/" ? rutaActual === "/" : rutaActual.startsWith(item.ruta);
+          return (
+            <a href={item.ruta} class={`nav-pildora ${esActivo ? "activa" : ""}`}>
+              {item.texto}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <!-- Botón Móvil Circular -->
+    <button id="btn-menu-movil" class="boton-hamburguesa" aria-label="Abrir menú" type="button">
+      <span class="linea"></span>
+      <span class="linea"></span>
+    </button>
+  </div>
+
+  <!-- Panel Menú Móvil -->
+  <div id="panel-menu-movil" class="menu-movil">
+    {
+      sitio.menu.map((item) => {
+        const esActivo = item.ruta === "/" ? rutaActual === "/" : rutaActual.startsWith(item.ruta);
+        return (
+          <a href={item.ruta} class={`link-movil ${esActivo ? "activo" : ""}`}>
+            {item.texto}
+          </a>
+        );
+      })
+    }
+  </div>
+</header>
+
+<style>
+  .header-voltara {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: rgba(10, 8, 7, 0.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--c-borde);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .contenedor-nav {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-voltara {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--c-crema);
+    transition: transform 0.25s ease;
+  }
+
+  .logo-voltara:hover {
+    transform: scale(1.03);
+  }
+
+  .logo-v {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--c-rojo) 0%, var(--c-rojo-oscuro) 100%);
+    color: #ffffff;
+    font-family: var(--font-titulos);
+    font-size: 22px;
+    box-shadow: 0 2px 10px rgba(230, 25, 25, 0.4);
+  }
+
+  .logo-nombre {
+    font-family: var(--font-titulos);
+    font-size: 28px;
+    letter-spacing: 0.12em;
+    color: var(--c-crema);
+  }
+
+  .nav-escritorio {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--c-superficie);
+    padding: 0.35rem 0.6rem;
+    border-radius: var(--radio-pildora);
+    border: 1px solid var(--c-borde);
+  }
+
+  .nav-pildora {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--c-texto-suave);
+    padding: 0.5rem 1.05rem;
+    border-radius: var(--radio-pildora);
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-pildora:hover {
+    color: var(--c-crema);
+    background-color: rgba(230, 25, 25, 0.15);
+  }
+
+  .nav-pildora.activa {
+    color: #ffffff;
+    background-color: var(--c-rojo);
+    box-shadow: 0 2px 12px rgba(230, 25, 25, 0.45);
+  }
+
+  .boton-hamburguesa {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radio-circular);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    padding: 12px;
+    cursor: pointer;
+  }
+
+  .boton-hamburguesa .linea {
+    width: 100%;
+    height: 2px;
+    background-color: var(--c-crema);
+    border-radius: 2px;
+  }
+
+  .menu-movil {
+    display: none;
+    background-color: var(--c-superficie);
+    border-bottom: 1px solid var(--c-borde);
+    padding: 1.25rem 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .link-movil {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--c-crema);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radio-pildora);
+  }
+
+  .link-movil.activo,
+  .link-movil:hover {
+    background-color: var(--c-rojo);
+    color: #ffffff;
+  }
+
+  @media (max-width: 860px) {
+    .nav-escritorio {
+      display: none;
+    }
+    .boton-hamburguesa {
+      display: flex;
+    }
+    .menu-movil.abierto {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("btn-menu-movil");
+  const panel = document.getElementById("panel-menu-movil");
+  if (btn && panel) {
+    btn.addEventListener("click", () => {
+      panel.classList.toggle("abierto");
+    });
+  }
+</script>

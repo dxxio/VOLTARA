@@ -1,0 +1,338 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const hitos = [
+  {
+    ano: "2010",
+    titulo: "El comienzo de la marca",
+    descripcion:
+      "Un colectivo de diseñadores y músicos decide romper con la inercia de replicar siempre los mismos diseños clásicos. En un modesto taller, nacen los primeros bosquejos de lo que sería VOLTARA.",
+    meta: "Fundación y visión independiente.",
+  },
+  {
+    ano: "2014",
+    titulo: "Primer lanzamiento de guitarras",
+    descripcion:
+      "Se presenta oficialmente la VOLTARA V100. La recepción en el circuito de rock alternativo e indie valida la propuesta: instrumentos fiables, con personalidad visual y resonancia audaz.",
+    meta: "Debut en escenarios y estudios.",
+  },
+  {
+    ano: "2019",
+    titulo: "Ampliación de la propuesta musical",
+    descripcion:
+      "VOLTARA responde a las demandas de su comunidad incorporando la guitarra acústica A200 para compositores y el bajo eléctrico B300, consolidando una oferta sonora integral.",
+    meta: "Expansión a nuevos géneros.",
+  },
+  {
+    ano: "2026",
+    titulo: "El siguiente capítulo de VOLTARA",
+    descripcion:
+      "Con presencia en festivales y estudios internacionales, VOLTARA inicia una nueva etapa enfocada en maderas de origen responsable, pastillas dinámicas y conexión directa con creadores.",
+    meta: "Innovación continua y comunidad global.",
+  },
+];
+---
+
+<Layout titulo="Historia de VOLTARA | 2010 - 2026">
+  <section class="seccion-historia-page">
+    <div class="contenedor">
+      <header class="cabecera">
+        <span class="pildora-tag">NARRATIVA EDITORIAL</span>
+        <h1 class="h1-tit">La Historia de VOLTARA</h1>
+        <p class="bajada">
+          Quince años de independencia, evolución continua y compromiso innegociable con el tono
+          auténtico.
+        </p>
+      </header>
+
+      <!-- Línea de Tiempo Vertical Descendente -->
+      <div class="linea-tiempo-vertical">
+        {
+          hitos.map((h, i) => (
+            <div class={`nodo-vertical ${i % 2 === 0 ? "lado-izq" : "lado-der"}`}>
+              <div class="nodo-circulo">
+                <span class="ano-txt">{h.ano}</span>
+              </div>
+
+              <article class="tarjeta-hito">
+                <span class="pildora-hito">HITO #0{i + 1}</span>
+                <h2 class="titulo-h">{h.titulo}</h2>
+                <p class="desc-h">{h.descripcion}</p>
+                <div class="caja-meta">
+                  <span class="meta-label">LOGRO CLAVE:</span>
+                  <span class="meta-val">{h.meta}</span>
+                </div>
+              </article>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Sección de Filosofía y Valores -->
+      <div class="seccion-valores">
+        <div class="cabecera-valores">
+          <span class="pildora-tag">NUESTRA ESENCIA</span>
+          <h2 class="h2-valores">Filosofía y Valores</h2>
+          <p class="bajada-valores">
+            Tres pilares irrenunciables que guían cada instrumento que sale de nuestras manos.
+          </p>
+        </div>
+
+        <div class="grid-tres-valores">
+          <div class="card-valor">
+            <div class="circulo-icono-valor"><span>01</span></div>
+            <h3>Creatividad</h3>
+            <p>
+              Diseñamos para inspirar nuevas canciones, no para reproducir fórmulas gastadas. La
+              originalidad es el motor de todo lo que hacemos.
+            </p>
+          </div>
+
+          <div class="card-valor">
+            <div class="circulo-icono-valor"><span>02</span></div>
+            <h3>Autenticidad</h3>
+            <p>
+              Maderas con grano real, tonos orgánicos y respeto por la dinámica individual de cada
+              músico. Tu sonido debe ser enteramente tuyo.
+            </p>
+          </div>
+
+          <div class="card-valor">
+            <div class="circulo-icono-valor"><span>03</span></div>
+            <h3>Pasión por la Música</h3>
+            <p>
+              Somos músicos construyendo para músicos. Entendemos la vibración de una cuerda contra
+              la madera porque vivimos en el mismo escenario.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .seccion-historia-page {
+    padding: 5rem 0 6rem 0;
+    background-color: var(--c-fondo);
+  }
+  .contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .cabecera {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 4rem auto;
+  }
+  .pildora-tag {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo);
+    color: var(--c-rojo);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+  .h1-tit {
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    color: var(--c-crema);
+    margin-bottom: 0.75rem;
+  }
+  .bajada {
+    font-size: 1.05rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+  }
+
+  /* Línea vertical */
+  .linea-tiempo-vertical {
+    position: relative;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+  .linea-tiempo-vertical::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: linear-gradient(180deg, var(--c-rojo) 0%, var(--c-borde) 50%, var(--c-rojo) 100%);
+    transform: translateX(-50%);
+  }
+
+  .nodo-vertical {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    position: relative;
+  }
+  .nodo-circulo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 35px;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background-color: var(--c-rojo);
+    border: 3px solid var(--c-crema);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(230, 25, 25, 0.5);
+    z-index: 5;
+  }
+  .ano-txt {
+    font-family: var(--font-titulos);
+    font-size: 1.35rem;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+  }
+
+  .tarjeta-hito {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-curvo);
+    padding: 2.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+  }
+  .tarjeta-hito:hover {
+    border-color: var(--c-rojo);
+    transform: translateY(-3px);
+  }
+  .nodo-vertical.lado-izq .tarjeta-hito {
+    grid-column: 1;
+    text-align: right;
+  }
+  .nodo-vertical.lado-der .tarjeta-hito {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .pildora-hito {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: var(--c-ambar);
+    letter-spacing: 0.1em;
+  }
+  .titulo-h {
+    font-size: 1.8rem;
+    color: var(--c-crema);
+    margin: 0.35rem 0 0.75rem 0;
+  }
+  .desc-h {
+    font-size: 0.9rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  .caja-meta {
+    background-color: var(--c-fondo);
+    border: 1px solid var(--c-borde);
+    border-radius: 10px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.78rem;
+  }
+  .meta-label {
+    font-weight: 800;
+    color: var(--c-rojo);
+  }
+  .meta-val {
+    color: var(--c-crema);
+  }
+
+  /* Sección Valores */
+  .seccion-valores {
+    margin-top: 6rem;
+    padding-top: 4rem;
+    border-top: 1px solid var(--c-borde);
+  }
+  .cabecera-valores {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+  }
+  .h2-valores {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    color: var(--c-crema);
+    margin-bottom: 0.5rem;
+  }
+  .bajada-valores {
+    font-size: 1rem;
+    color: var(--c-texto-suave);
+  }
+  .grid-tres-valores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .card-valor {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-curvo);
+    padding: 2.25rem 1.75rem;
+    text-align: center;
+    transition: all 0.25s ease;
+  }
+  .card-valor:hover {
+    transform: translateY(-4px);
+    border-color: var(--c-rojo);
+  }
+  .circulo-icono-valor {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: var(--c-tarjeta);
+    border: 1px solid var(--c-rojo);
+    color: var(--c-rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-titulos);
+    font-size: 1.3rem;
+    margin: 0 auto 1.25rem auto;
+  }
+  .card-valor h3 {
+    font-size: 1.6rem;
+    color: var(--c-crema);
+    margin-bottom: 0.5rem;
+  }
+  .card-valor p {
+    font-size: 0.88rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 800px) {
+    .linea-tiempo-vertical::before {
+      left: 30px;
+    }
+    .nodo-circulo {
+      left: 30px;
+      width: 56px;
+      height: 56px;
+    }
+    .nodo-vertical {
+      grid-template-columns: 1fr;
+      padding-left: 70px;
+    }
+    .nodo-vertical.lado-izq .tarjeta-hito,
+    .nodo-vertical.lado-der .tarjeta-hito {
+      grid-column: 1;
+      text-align: left;
+    }
+    .grid-tres-valores {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

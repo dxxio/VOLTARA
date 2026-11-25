@@ -1,0 +1,352 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'catalogo-instrumentos' } = Astro.props;
+
+const productos = [
+  {
+    tipo: 'guitarra',
+    nombre: 'Player Stratocaster®',
+    serie: 'PLAYER SERIES II',
+    precio: '$799.99',
+    foto: '/imagenes/stratocaster.jpg',
+    descripcion: 'Tres pastillas Player Series Alnico 5, mástil moderno en "C" con 22 trastes medium jumbo.',
+    acabado: 'Sunburst 3 Colores',
+    pastillas: 'SSS Alnico 5',
+    tag: 'MÁS VENDIDA',
+  },
+  {
+    tipo: 'guitarra',
+    nombre: 'Player Telecaster®',
+    serie: 'PLAYER SERIES II',
+    precio: '$799.99',
+    foto: '/imagenes/telecaster.jpg',
+    descripcion: 'Twang cortante clásico, puente con 6 silletas de acero en bloque para máxima estabilidad.',
+    acabado: 'Butterscotch Blonde',
+    pastillas: 'SS Vintage Tele',
+    tag: 'ORIGINAL 1951',
+  },
+  {
+    tipo: 'bajo',
+    nombre: 'Player Precision Bass®',
+    serie: 'PLAYER SERIES II',
+    precio: '$849.99',
+    foto: '/imagenes/precision-bass.jpg',
+    descripcion: 'La base del rock: pastilla dividida con graves contundentes y pegada instantánea.',
+    acabado: 'Onyx Black',
+    pastillas: 'Split Single-Coil',
+    tag: 'ESTÁNDAR MUNDIAL',
+  },
+];
+---
+
+<section id={id} class="seccion-catalogo-curva">
+  <div class="contenedor">
+    <header class="header-catalogo">
+      <span class="pildora-roja-borde">CATÁLOGO OFICIAL 2026</span>
+      <h1 class="titulo-cat">Catálogo de Instrumentos Fender</h1>
+      <p class="bajada-cat">
+        Bordes curvados, tonos cálidos y pastillas legendarias forjadas para el escenario real.
+      </p>
+
+      <div class="barra-filtros">
+        <button class="btn-filtro-pildora activo" data-filtro="todos">TODOS</button>
+        <button class="btn-filtro-pildora" data-filtro="guitarra">GUITARRAS ELÉCTRICAS</button>
+        <button class="btn-filtro-pildora" data-filtro="bajo">BAJOS</button>
+      </div>
+    </header>
+
+    <div class="grid-productos-curvos">
+      {
+        productos.map((prod) => (
+          <article class="tarjeta-prod-redonda" data-cat={prod.tipo}>
+            <div class="top-tarjeta">
+              <span class="pildora-tag-roja">{prod.tag}</span>
+              <span class="precio-prod">{prod.precio}</span>
+            </div>
+
+            <!-- Marco de la foto limpio y directo -->
+            <div class="marco-foto-producto">
+              <img
+                src={prod.foto}
+                alt={prod.nombre}
+                class="foto-directa-guit"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="cuerpo-tarjeta">
+              <span class="serie-txt">{prod.serie}</span>
+              <h2 class="nombre-guit">{prod.nombre}</h2>
+              <p class="desc-guit">{prod.descripcion}</p>
+
+              <div class="specs-pildora-caja">
+                <div class="spec-fila">
+                  <span>Acabado:</span>
+                  <strong>{prod.acabado}</strong>
+                </div>
+                <div class="spec-fila">
+                  <span>Pastillas:</span>
+                  <strong>{prod.pastillas}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="pie-tarjeta">
+              <a href="/soporte" class="btn-rojo-pildora-accion">
+                <span>VER ESPECIFICACIONES TÉCNICAS</span>
+                <span class="flecha">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .seccion-catalogo-curva {
+    width: 100%;
+    background-color: #0F0B09;
+    padding: 5rem 0 6rem 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .header-catalogo {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  .pildora-roja-borde {
+    display: inline-block;
+    padding: 0.45rem 1.15rem;
+    border-radius: 9999px;
+    background-color: #1A130F;
+    border: 1px solid #E11D1D;
+    color: #E11D1D;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+
+  .titulo-cat {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: #F5EADB;
+    margin-bottom: 1rem;
+  }
+
+  .bajada-cat {
+    font-size: 1.05rem;
+    color: #BFA997;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .barra-filtros {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-filtro-pildora {
+    padding: 0.7rem 1.4rem;
+    border-radius: 9999px;
+    background-color: #1A130F;
+    border: 1px solid #453023;
+    color: #F5EADB;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-filtro-pildora:hover,
+  .btn-filtro-pildora.activo {
+    background-color: #E11D1D;
+    border-color: #E11D1D;
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(225, 29, 29, 0.4);
+  }
+
+  .grid-productos-curvos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .tarjeta-prod-redonda {
+    background-color: #1A130F;
+    border: 1px solid #453023;
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .tarjeta-prod-redonda:hover {
+    transform: translateY(-5px);
+    border-color: #E11D1D;
+    box-shadow: 0 14px 35px rgba(225, 29, 29, 0.25);
+  }
+
+  .top-tarjeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .pildora-tag-roja {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background-color: #E11D1D;
+    color: #FFFFFF;
+  }
+
+  .precio-prod {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #F5EADB;
+  }
+
+  .marco-foto-producto {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #0F0B09;
+    border: 1px solid #453023;
+    margin-bottom: 1.25rem;
+  }
+
+  /* La foto de la guitarra se muestra directamente sin ninguna capa encima */
+  .foto-directa-guit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .tarjeta-prod-redonda:hover .foto-directa-guit {
+    transform: scale(1.05);
+  }
+
+  .serie-txt {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #C27E38;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 0.35rem;
+  }
+
+  .nombre-guit {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #F5EADB;
+    margin-bottom: 0.5rem;
+  }
+
+  .desc-guit {
+    font-size: 0.88rem;
+    color: #BFA997;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .specs-pildora-caja {
+    background-color: #0F0B09;
+    border: 1px solid #453023;
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .spec-fila {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+  }
+
+  .spec-fila span {
+    color: #BFA997;
+  }
+
+  .spec-fila strong {
+    color: #F5EADB;
+  }
+
+  .btn-rojo-pildora-accion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    border-radius: 9999px;
+    background-color: #E11D1D;
+    color: #FFFFFF;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-rojo-pildora-accion:hover {
+    background-color: #B30808;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .grid-productos-curvos {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const botones = document.querySelectorAll('.btn-filtro-pildora');
+  const cards = document.querySelectorAll('.tarjeta-prod-redonda');
+
+  botones.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      botones.forEach((b) => b.classList.remove('activo'));
+      btn.classList.add('activo');
+      const f = btn.getAttribute('data-filtro');
+
+      cards.forEach((c) => {
+        const cat = c.getAttribute('data-cat');
+        if (f === 'todos' || cat === f) {
+          (c as HTMLElement).style.display = 'flex';
+        } else {
+          (c as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,320 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = "hero-editorial" } = Astro.props;
+---
+
+<section id={id} class="hero-redondeado">
+  <div class="contenedor-hero">
+    <!-- Columna Izquierda Editorial -->
+    <div class="col-texto">
+      <div class="pildora-roja">
+        <span class="punto-luz"></span>
+        <span>PLAYER SERIES II &bull; EDICIÓN 2026</span>
+      </div>
+
+      <h1 class="hero-titulo">
+        A Higher <span class="marca-roja">Standard</span>
+      </h1>
+
+      <p class="hero-desc">
+        Instruments built for a life of music. Explore the craft, the people and the stories behind
+        every guitar. Fabricadas con maderas nobles y pastillas bobinadas a mano.
+      </p>
+
+      <div class="grupo-botones">
+        <a href="/productos" class="btn-rojo-pildora">
+          <span>EXPLORAR CATÁLOGO</span>
+          <span class="flecha">&rarr;</span>
+        </a>
+        <a href="/historia" class="btn-madera-pildora">
+          <span>NUESTRO LEGADO</span>
+        </a>
+      </div>
+
+      <!-- Métricas en píldora -->
+      <div class="metricas-pildora">
+        <div class="item-m">
+          <strong>1946</strong>
+          <span>Fundación</span>
+        </div>
+        <div class="separador"></div>
+        <div class="item-m">
+          <strong>+75</strong>
+          <span>Años de tono</span>
+        </div>
+        <div class="separador"></div>
+        <div class="item-m">
+          <strong>100%</strong>
+          <span>Genuino</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha: Ranura de Foto Lista con marco curvo -->
+    <div class="col-foto">
+      <div class="marco-curvo-hero">
+        <img
+          src="/imagenes/hero-guitarra.jpg"
+          alt="Guitarra eléctrica en primer plano"
+          class="img-slot img-hero"
+          onerror="this.style.opacity='0'; this.nextElementSibling.style.display='flex';"
+        />
+        <!-- Respaldo artístico que se ve si aún no has puesto tu foto -->
+        <div class="respaldo-hero-curvo">
+          <div class="circulo-insignia">
+            <span class="f-script">F</span>
+          </div>
+          <span class="tag-espera">LISTA PARA TU IMAGEN: hero-guitarra.jpg</span>
+          <span class="sub-espera">Stratocaster &bull; Fiesta Red</span>
+        </div>
+
+        <div class="insignia-flotante">
+          <span class="punto-rojo"></span>
+          <span>Fiesta Red Lacquer &bull; Nitrocelulosa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-redondeado {
+    width: 100%;
+    background: radial-gradient(circle at 80% 20%, #291811 0%, var(--c-fondo) 65%);
+    padding: 4.5rem 0 5.5rem 0;
+    border-bottom: 1px solid var(--c-borde-madera);
+  }
+
+  .contenedor-hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .pildora-roja {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo-fender);
+    color: var(--c-crema);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .punto-luz {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radio-circular);
+    background-color: var(--c-rojo-fender);
+    box-shadow: 0 0 8px var(--c-rojo-fender);
+  }
+
+  .hero-titulo {
+    font-size: clamp(2.5rem, 4.8vw, 4rem);
+    font-weight: 900;
+    color: var(--c-crema);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .marca-roja {
+    color: var(--c-rojo-fender);
+    font-style: italic;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--c-texto-suave);
+    line-height: 1.65;
+    margin-bottom: 2.25rem;
+  }
+
+  .grupo-botones {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .btn-rojo-pildora {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2.2rem;
+    border-radius: var(--radio-pildora);
+    background: linear-gradient(135deg, var(--c-rojo-fender) 0%, var(--c-rojo-profundo) 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    box-shadow: 0 8px 25px rgba(225, 29, 29, 0.4);
+    transition: all 0.25s ease;
+  }
+
+  .btn-rojo-pildora:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(225, 29, 29, 0.6);
+  }
+
+  .btn-madera-pildora {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 1.8rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde-madera);
+    color: var(--c-crema);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+  }
+
+  .btn-madera-pildora:hover {
+    border-color: var(--c-rojo-fender);
+    color: var(--c-rojo-fender);
+  }
+
+  .metricas-pildora {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding: 0.75rem 1.75rem;
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde-madera);
+    border-radius: var(--radio-pildora);
+  }
+
+  .item-m {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item-m strong {
+    font-size: 1.25rem;
+    color: var(--c-crema);
+    font-weight: 800;
+  }
+
+  .item-m span {
+    font-size: 0.68rem;
+    color: var(--c-texto-suave);
+    text-transform: uppercase;
+  }
+
+  .separador {
+    width: 1px;
+    height: 25px;
+    background-color: var(--c-borde-madera);
+  }
+
+  /* Marco Curvo para la Foto del Hero */
+  .marco-curvo-hero {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    border-radius: var(--radio-suave);
+    overflow: hidden;
+    background-color: var(--c-superficie);
+    border: 2px solid var(--c-borde-madera);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .img-hero {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  .respaldo-hero-curvo {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, #361f17 0%, #17110e 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .circulo-insignia {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radio-circular);
+    background-color: var(--c-rojo-fender);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(225, 29, 29, 0.5);
+  }
+
+  .f-script {
+    font-family: "Brush Script MT", cursive, sans-serif;
+    font-size: 50px;
+    font-style: italic;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  .tag-espera {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--c-crema);
+    letter-spacing: 0.08em;
+  }
+
+  .sub-espera {
+    font-size: 0.7rem;
+    color: var(--c-texto-suave);
+  }
+
+  .insignia-flotante {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.85rem;
+    background-color: rgba(15, 11, 9, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--c-borde-madera);
+    border-radius: var(--radio-pildora);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--c-crema);
+  }
+
+  .punto-rojo {
+    width: 7px;
+    height: 7px;
+    border-radius: var(--radio-circular);
+    background-color: var(--c-rojo-fender);
+  }
+
+  @media (max-width: 900px) {
+    .contenedor-hero {
+      grid-template-columns: 1fr;
+    }
+    .marco-curvo-hero {
+      height: 320px;
+    }
+  }
+</style>

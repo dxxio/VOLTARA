@@ -1,0 +1,321 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout titulo="Bajos VOLTARA | Modelo B300">
+  <div class="pagina-bajos">
+    <!-- 1. Introducción Visual Inmersiva -->
+    <section class="hero-bajos">
+      <div class="contenedor">
+        <div class="bajos-intro">
+          <span class="pildora-tag">LÍNEA DE BAJOS ELÉCTRICOS</span>
+          <h1 class="tit-bajos">La Base del Poder</h1>
+          <p class="bajada-bajos">
+            En el rock y en la música contemporánea, el bajo es el latido que une el ritmo y la
+            melodía. En VOLTARA diseñamos instrumentos con rango dinámico, peso armónico y pegada
+            que se siente en el pecho.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Presentación del Modelo VOLTARA B300 -->
+    <section class="seccion-modelo-b300">
+      <div class="contenedor">
+        <div class="card-b300">
+          <!-- Columna Visual con tu archivo precision-bass.jpg -->
+          <div class="b300-visual">
+            <div class="marco-foto-bajo">
+              <img
+                src="/imagenes/precision-bass.jpg"
+                alt="Bajo Eléctrico VOLTARA B300"
+                class="img-bajo"
+                loading="eager"
+              />
+              <span class="tag-modelo-flotante">MODELO INSIGNIA</span>
+            </div>
+          </div>
+
+          <!-- Columna Informativa de Rendimiento -->
+          <div class="b300-info">
+            <span class="sub-serie">BAJO ELÉCTRICO DE ALTO RENDIMIENTO</span>
+            <h2 class="nombre-b300">VOLTARA B300</h2>
+
+            <p class="parrafo-destacado">
+              Diseñado para aportar profundidad, presencia y potencia a cada canción.
+            </p>
+
+            <p class="desc-detallada">
+              El VOLTARA B300 combina un cuerpo anatómico cómodo para largas sesiones en directo con
+              un circuito electrónico equilibrado que asegura pegada masiva en frecuencias graves
+              sin enturbiar los medios ni perder articulación en notas rápidas.
+            </p>
+
+            <!-- Atributos Clave -->
+            <div class="caja-atributos">
+              <div class="item-at">
+                <span class="at-titulo">PROFUNDIDAD</span>
+                <span class="at-desc"
+                  >Fundamento grave contundente y redondo que llena cualquier mezcla en vivo o en
+                  estudio.</span
+                >
+              </div>
+              <div class="item-at">
+                <span class="at-titulo">PRESENCIA</span>
+                <span class="at-desc"
+                  >Definición de frecuencias medias para cortar con claridad a través de guitarras
+                  de alta ganancia.</span
+                >
+              </div>
+              <div class="item-at">
+                <span class="at-titulo">POTENCIA</span>
+                <span class="at-desc"
+                  >Respuesta dinámica inmediata para técnicas de dedos, púa agresiva o slap moderno.</span
+                >
+              </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="acciones-b300">
+              <a href="/soporte" class="btn-rojo-pildora">
+                <span>SOLICITAR ASISTENCIA TÉCNICA</span>
+                <span class="flecha">&rarr;</span>
+              </a>
+              <a href="/guitarras" class="btn-madera-pildora">
+                <span>VER GUITARRAS</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .pagina-bajos {
+    width: 100%;
+    background-color: var(--c-fondo, #0a0807);
+    color: var(--c-crema, #f7efe2);
+    min-height: 80vh;
+  }
+
+  .contenedor {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Hero Bajos */
+  .hero-bajos {
+    padding: 5rem 0 3.5rem 0;
+    background: radial-gradient(circle at 50% 0%, #26160f 0%, var(--c-fondo, #0a0807) 80%);
+    text-align: center;
+    border-bottom: 1px solid var(--c-borde, #3b2a20);
+  }
+
+  .bajos-intro {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .pildora-tag {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radio-pildora, 9999px);
+    background-color: var(--c-superficie, #15110e);
+    border: 1px solid var(--c-rojo, #e61919);
+    color: var(--c-rojo, #e61919);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+
+  .tit-bajos {
+    font-family: var(--font-titulos, "Bebas Neue", sans-serif);
+    font-size: clamp(3rem, 5.5vw, 4.8rem);
+    color: var(--c-crema, #f7efe2);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .bajada-bajos {
+    font-size: 1.1rem;
+    color: var(--c-texto-suave, #bfa997);
+    line-height: 1.7;
+  }
+
+  /* Sección Modelo B300 */
+  .seccion-modelo-b300 {
+    padding: 4rem 0 6rem 0;
+    background-color: var(--c-fondo, #0a0807);
+  }
+
+  .card-b300 {
+    background-color: var(--c-superficie, #15110e);
+    border: 1px solid var(--c-borde, #3b2a20);
+    border-radius: var(--radio-curvo, 20px);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3.5rem;
+    align-items: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .marco-foto-bajo {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: var(--c-tarjeta, #1e1713);
+    border: 1px solid var(--c-borde, #3b2a20);
+  }
+
+  .img-bajo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .card-b300:hover .img-bajo {
+    transform: scale(1.03);
+  }
+
+  .tag-modelo-flotante {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radio-pildora, 9999px);
+    background-color: var(--c-ambar, #d9822b);
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .sub-serie {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--c-ambar, #d9822b);
+    letter-spacing: 0.1em;
+  }
+
+  .nombre-b300 {
+    font-family: var(--font-titulos, "Bebas Neue", sans-serif);
+    font-size: clamp(2.8rem, 4.5vw, 4rem);
+    color: var(--c-crema, #f7efe2);
+    margin: 0.25rem 0 1rem 0;
+    letter-spacing: 0.05em;
+  }
+
+  .parrafo-destacado {
+    font-size: 1.25rem;
+    color: var(--c-rojo, #e61919);
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .desc-detallada {
+    font-size: 0.95rem;
+    color: var(--c-texto-suave, #bfa997);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .caja-atributos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--c-fondo, #0a0807);
+    border: 1px solid var(--c-borde, #3b2a20);
+    border-radius: 14px;
+    padding: 1.5rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .item-at {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .at-titulo {
+    font-family: var(--font-titulos, "Bebas Neue", sans-serif);
+    font-size: 1.25rem;
+    color: var(--c-crema, #f7efe2);
+    letter-spacing: 0.05em;
+  }
+
+  .at-desc {
+    font-size: 0.85rem;
+    color: var(--c-texto-suave, #bfa997);
+    line-height: 1.5;
+  }
+
+  .acciones-b300 {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-rojo-pildora {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2.2rem;
+    border-radius: var(--radio-pildora, 9999px);
+    background: linear-gradient(
+      135deg,
+      var(--c-rojo, #e61919) 0%,
+      var(--c-rojo-oscuro, #b00e0e) 100%
+    );
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    box-shadow: 0 6px 20px rgba(230, 25, 25, 0.4);
+    transition: all 0.25s ease;
+  }
+
+  .btn-rojo-pildora:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(230, 25, 25, 0.6);
+  }
+
+  .btn-madera-pildora {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 1.8rem;
+    border-radius: var(--radio-pildora, 9999px);
+    background-color: var(--c-superficie, #15110e);
+    border: 1px solid var(--c-borde, #3b2a20);
+    color: var(--c-crema, #f7efe2);
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+  }
+
+  .btn-madera-pildora:hover {
+    border-color: var(--c-rojo, #e61919);
+    color: var(--c-rojo, #e61919);
+  }
+
+  @media (max-width: 900px) {
+    .card-b300 {
+      grid-template-columns: 1fr;
+      padding: 2rem;
+    }
+    .marco-foto-bajo {
+      height: 300px;
+    }
+  }
+</style>

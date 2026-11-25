@@ -1,0 +1,280 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const artistas = [
+  {
+    nombre: "Alex Morgan",
+    estilo: "Rock Alternativo",
+    modeloUsado: "VOLTARA V100 Custom",
+    foto: "/imagenes/artistas/mark-knopfler.jpg",
+    categoria: "alternativo",
+    bio: "Guitarrista y compositor reconocido por combinar muros de sonido intensos con texturas melódicas atmosféricas. Encuentra en la versatilidad de la V100 la herramienta perfecta para transiciones fluidas de estudio a directo.",
+    cita: "VOLTARA tiene esa mordida cruda que el rock alternativo necesita para no sonar domesticado.",
+  },
+  {
+    nombre: "Daniel Cross",
+    estilo: "Rock Clásico",
+    modeloUsado: "VOLTARA V200 Heritage",
+    foto: "/imagenes/artistas/bon-jovi.jpg",
+    categoria: "clasico",
+    bio: "Fiel defensor del tono analógico directo al amplificador. Con más de una década en giras nacionales, Daniel confía en la estabilidad y en el ataque inmediato de la V200 para sostener solos cargados de dinámica.",
+    cita: "El sustain y la afinación son inamovibles. Es una guitarra hecha para resistir noches enteras en carretera.",
+  },
+  {
+    nombre: "Mia Sterling",
+    estilo: "Indie Rock",
+    modeloUsado: "VOLTARA A200 Acústica",
+    foto: "/imagenes/artistas/david-gilmour.jpg",
+    categoria: "indie",
+    bio: "Cantautora y productora independiente. Su estilo rítmico percusivo y arreglos íntimos destacan gracias a la resonancia natural y el balance de medios que proyecta la acústica A200.",
+    cita: "La A200 respeta el aire y la respiración de las canciones. Compongo cada tema con ella en mis manos.",
+  },
+];
+---
+
+<Layout titulo="Artistas VOLTARA | Alex Morgan, Daniel Cross y Mia Sterling">
+  <section class="seccion-artistas-page">
+    <div class="contenedor">
+      <header class="cabecera">
+        <span class="pildora-tag">COMUNIDAD CREATIVA</span>
+        <h1 class="h1-tit">Artistas VOLTARA</h1>
+        <p class="bajada">
+          Músicos contemporáneos y auténticos que eligen nuestro sonido para amplificar su visión
+          musical.
+        </p>
+
+        <!-- Filtros funcionales -->
+        <div class="filtros-artistas">
+          <button class="btn-art-filtro activo" data-filtro="todos">TODOS</button>
+          <button class="btn-art-filtro" data-filtro="alternativo">ROCK ALTERNATIVO</button>
+          <button class="btn-art-filtro" data-filtro="clasico">ROCK CLÁSICO</button>
+          <button class="btn-art-filtro" data-filtro="indie">INDIE ROCK</button>
+        </div>
+      </header>
+
+      <div class="grid-artistas-completa">
+        {
+          artistas.map((art) => (
+            <article class="card-artista-completa" data-cat={art.categoria}>
+              <div class="marco-foto-art">
+                <img src={art.foto} alt={art.nombre} class="img-art" loading="lazy" />
+                <span class="pildora-estilo-flotante">{art.estilo}</span>
+              </div>
+
+              <div class="cuerpo-art">
+                <span class="gear-tag">{art.modeloUsado}</span>
+                <h2 class="nombre-art">{art.nombre}</h2>
+                <p class="bio-txt">{art.bio}</p>
+
+                <blockquote class="cita-art">"{art.cita}"</blockquote>
+              </div>
+
+              <div class="pie-art">
+                <a href="/guitarras" class="btn-gear-link">
+                  <span>CONOCER SU INSTRUMENTO</span>
+                  <span class="flecha">&rarr;</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .seccion-artistas-page {
+    padding: 5rem 0 6rem 0;
+    background-color: var(--c-fondo);
+  }
+  .contenedor {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .cabecera {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3.5rem auto;
+  }
+  .pildora-tag {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo);
+    color: var(--c-rojo);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+  .h1-tit {
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    color: var(--c-crema);
+    margin-bottom: 0.75rem;
+  }
+  .bajada {
+    font-size: 1.05rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .filtros-artistas {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .btn-art-filtro {
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    color: var(--c-crema);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+  }
+  .btn-art-filtro.activo,
+  .btn-art-filtro:hover {
+    background-color: var(--c-rojo);
+    border-color: var(--c-rojo);
+    color: #ffffff;
+  }
+
+  .grid-artistas-completa {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .card-artista-completa {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-curvo);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+  }
+  .card-artista-completa:hover {
+    transform: translateY(-5px);
+    border-color: var(--c-rojo);
+    box-shadow: 0 12px 30px rgba(230, 25, 25, 0.25);
+  }
+
+  .marco-foto-art {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    background-color: var(--c-tarjeta);
+    border-bottom: 1px solid var(--c-borde);
+    overflow: hidden;
+  }
+  .img-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .card-artista-completa:hover .img-art {
+    transform: scale(1.05);
+  }
+
+  .pildora-estilo-flotante {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #ffffff;
+    background-color: var(--c-rojo);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radio-pildora);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .cuerpo-art {
+    padding: 1.75rem;
+  }
+  .gear-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--c-ambar);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .nombre-art {
+    font-size: 1.9rem;
+    color: var(--c-crema);
+    margin: 0.2rem 0 0.75rem 0;
+  }
+  .bio-txt {
+    font-size: 0.88rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  .cita-art {
+    background-color: var(--c-fondo);
+    border-left: 3px solid var(--c-rojo);
+    padding: 0.85rem 1rem;
+    border-radius: 0 12px 12px 0;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--c-crema);
+    line-height: 1.5;
+  }
+
+  .pie-art {
+    padding: 1.25rem 1.75rem;
+    border-top: 1px solid var(--c-borde);
+  }
+  .btn-gear-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--c-crema);
+    transition: color 0.2s ease;
+  }
+  .btn-gear-link:hover {
+    color: var(--c-rojo);
+  }
+
+  @media (max-width: 900px) {
+    .grid-artistas-completa {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const botones = document.querySelectorAll(".btn-art-filtro");
+  const cards = document.querySelectorAll(".card-artista-completa");
+
+  botones.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      botones.forEach((b) => b.classList.remove("activo"));
+      btn.classList.add("activo");
+      const filtro = btn.getAttribute("data-filtro");
+
+      cards.forEach((c) => {
+        const cat = c.getAttribute("data-cat");
+        if (filtro === "todos" || cat === filtro) {
+          (c as HTMLElement).style.display = "flex";
+        } else {
+          (c as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>

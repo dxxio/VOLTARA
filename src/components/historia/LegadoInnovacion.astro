@@ -1,0 +1,346 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'legado-innovacion' } = Astro.props;
+
+const hitos = [
+  {
+    ano: '1946',
+    titulo: 'El Taller de Reparaciones de Leo Fender',
+    descripcion: 'En Fullerton, California, Leo comenzó reparando radios y amplificadores. Su convicción: inventar instrumentos resistentes, modulares y de amplificación pura que aguantaran noches enteras en la carretera.',
+    foto: '/imagenes/historia-taller.jpg',
+    nombreArchivo: 'historia-taller.jpg',
+    tag: 'ORIGEN DE TALLER',
+  },
+  {
+    ano: '1951',
+    titulo: 'Revolución: Telecaster y Precision Bass',
+    descripcion: 'Se presenta la primera guitarra eléctrica de cuerpo macizo producida en serie y el primer bajo eléctrico funcional de la historia. Nace la sección rítmica moderna del rock.',
+    foto: '/imagenes/telecaster.jpg',
+    nombreArchivo: 'telecaster.jpg',
+    tag: 'EL TWANG ELÉCTRICO',
+  },
+  {
+    ano: '1954',
+    titulo: 'Nacimiento de la Stratocaster®',
+    descripcion: 'Cuerpo con rebajes anatómicos, trémolo sincronizado patentado y tres pastillas que definieron la expresividad de Mark Knopfler, Jimi Hendrix, Stevie Ray Vaughan y Eric Clapton.',
+    foto: '/imagenes/stratocaster.jpg',
+    nombreArchivo: 'stratocaster.jpg',
+    tag: 'DISEÑO INMORTAL',
+  },
+  {
+    ano: '1959',
+    titulo: 'La Era Dorada y los Grandes Escenarios',
+    descripcion: 'Los amplificadores tweed y las guitarras Fender dominan el blues, el surf rock y los estadios de todo el mundo. La voz predilecta de bandas legendarias como Bon Jovi y Pink Floyd.',
+    foto: '/imagenes/historia-concierto.jpg',
+    nombreArchivo: 'historia-concierto.jpg',
+    tag: 'POTENCIA EN VIVO',
+  },
+];
+---
+
+<section id={id} class="seccion-historia-vertical">
+  <div class="contenedor">
+    <header class="header-historia">
+      <span class="pildora-roja-fender">HERENCIA Y CRONOLOGÍA</span>
+      <h1 class="titulo-historia">Historia y Evolución del Tono</h1>
+      <p class="bajada-historia">
+        Sigue el camino vertical que transformó un humilde taller de electrónica en la marca más influyente de la música popular.
+      </p>
+    </header>
+
+    <!-- Línea de Tiempo Continua Vertical -->
+    <div class="linea-tiempo-vertical">
+      {
+        hitos.map((h, i) => (
+          <div class={`nodo-vertical ${i % 2 === 0 ? 'lado-izq' : 'lado-der'}`}>
+            <!-- Círculo del Año en la Línea Central -->
+            <div class="nodo-circulo">
+              <span class="ano-txt">{h.ano}</span>
+            </div>
+
+            <!-- Tarjeta con Bordes Redondeados y Ranura de Foto -->
+            <article class="tarjeta-hito-curva">
+              <span class="pildora-tag">{h.tag}</span>
+              <h2 class="titulo-hito">{h.titulo}</h2>
+              <p class="desc-hito">{h.descripcion}</p>
+
+              <!-- Ranura de Foto Lista para Cargar -->
+              <div class="marco-foto-hito">
+                <img
+                  src={h.foto}
+                  alt={h.titulo}
+                  class="img-slot"
+                  onerror="this.style.opacity='0'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="respaldo-foto-hito">
+                  <span class="archivo-req">IMAGEN: {h.nombreArchivo}</span>
+                  <span class="sub-req">Época {h.ano}</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Cierre en Píldora Gigante -->
+    <div class="cierre-curvo">
+      <h2>Haz Historia con Fender</h2>
+      <p>El mismo tono que forjaron Knopfler, Sambora y Hendrix, listo para tu sonido hoy.</p>
+      <a href="/productos" class="btn-rojo-pildora-cierre">
+        <span>EXPLORAR CATÁLOGO COMPLETO</span>
+        <span class="flecha">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .seccion-historia-vertical {
+    width: 100%;
+    background-color: var(--c-fondo);
+    padding: 5rem 0 6rem 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .header-historia {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 4rem auto;
+  }
+
+  .pildora-roja-fender {
+    display: inline-block;
+    padding: 0.45rem 1.15rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo-fender);
+    color: var(--c-rojo-fender);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.25rem;
+  }
+
+  .titulo-historia {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: var(--c-crema);
+    margin-bottom: 1rem;
+  }
+
+  .bajada-historia {
+    font-size: 1.05rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+  }
+
+  /* Línea vertical continua descendente */
+  .linea-tiempo-vertical {
+    position: relative;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .linea-tiempo-vertical::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: linear-gradient(180deg, var(--c-rojo-fender) 0%, var(--c-borde-madera) 50%, var(--c-rojo-fender) 100%);
+    transform: translateX(-50%);
+    border-radius: 3px;
+  }
+
+  .nodo-vertical {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Nodo Circular Central */
+  .nodo-circulo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 40px;
+    width: 68px;
+    height: 68px;
+    border-radius: var(--radio-circular);
+    background-color: var(--c-rojo-fender);
+    border: 3px solid var(--c-crema);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(225, 29, 29, 0.6);
+    z-index: 5;
+  }
+
+  .ano-txt {
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+  }
+
+  .tarjeta-hito-curva {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde-madera);
+    border-radius: var(--radio-suave);
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .tarjeta-hito-curva:hover {
+    border-color: var(--c-rojo-fender);
+    transform: translateY(-3px);
+  }
+
+  .nodo-vertical.lado-izq .tarjeta-hito-curva {
+    grid-column: 1;
+    text-align: right;
+  }
+
+  .nodo-vertical.lado-der .tarjeta-hito-curva {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .pildora-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-tarjeta);
+    border: 1px solid var(--c-borde-madera);
+    color: var(--c-rojo-fender);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+  }
+
+  .titulo-hito {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--c-crema);
+    margin-bottom: 0.75rem;
+  }
+
+  .desc-hito {
+    font-size: 0.9rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .marco-foto-hito {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--c-tarjeta);
+    border: 1px solid var(--c-borde-madera);
+  }
+
+  .respaldo-foto-hito {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, #2C1A14 0%, #150F0D 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .archivo-req {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--c-crema);
+  }
+
+  .sub-req {
+    font-size: 0.68rem;
+    color: var(--c-texto-suave);
+  }
+
+  /* Cierre */
+  .cierre-curvo {
+    margin-top: 5rem;
+    background: radial-gradient(circle at center, #2A1711 0%, var(--c-superficie) 100%);
+    border: 1px solid var(--c-rojo-fender);
+    border-radius: var(--radio-suave);
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+
+  .cierre-curvo h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--c-crema);
+    margin-bottom: 0.75rem;
+  }
+
+  .cierre-curvo p {
+    font-size: 1rem;
+    color: var(--c-texto-suave);
+    margin-bottom: 1.75rem;
+  }
+
+  .btn-rojo-pildora-cierre {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.95rem 2.25rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-rojo-fender);
+    color: #FFFFFF;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    box-shadow: 0 6px 20px rgba(225, 29, 29, 0.4);
+    transition: all 0.2s ease;
+  }
+
+  .btn-rojo-pildora-cierre:hover {
+    background-color: var(--c-rojo-profundo);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 800px) {
+    .linea-tiempo-vertical::before {
+      left: 30px;
+    }
+    .nodo-circulo {
+      left: 30px;
+      width: 56px;
+      height: 56px;
+    }
+    .nodo-vertical {
+      grid-template-columns: 1fr;
+      padding-left: 70px;
+    }
+    .nodo-vertical.lado-izq .tarjeta-hito-curva,
+    .nodo-vertical.lado-der .tarjeta-hito-curva {
+      grid-column: 1;
+      text-align: left;
+    }
+  }
+</style>

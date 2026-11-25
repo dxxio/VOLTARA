@@ -1,0 +1,198 @@
+---
+import { sitio } from "../datos/sitio";
+---
+
+<footer class="pie-voltara">
+  <div class="contenedor-pie">
+    <div class="columnas-pie">
+      <!-- Columna 1: Marca y Eslogan -->
+      <div class="col-marca">
+        <div class="logo-foot">
+          <span class="logo-v">V</span>
+          <span class="logo-txt">VOLTARA</span>
+        </div>
+        <p class="eslogan-foot">{sitio.eslogan}</p>
+        <p class="desc-foot">{sitio.descripcion}</p>
+      </div>
+
+      <!-- Columna 2: Navegación -->
+      <div class="col-links">
+        <h4 class="tit-col">EXPLORAR</h4>
+        <ul class="lista-foot">
+          <li><a href="/" class="item-link">Inicio</a></li>
+          <li><a href="/guitarras" class="item-link">Guitarras</a></li>
+          <li><a href="/bajos" class="item-link">Bajos Eléctricos</a></li>
+          <li><a href="/artistas" class="item-link">Comunidad de Artistas</a></li>
+          <li><a href="/historia" class="item-link">Nuestra Historia</a></li>
+          <li><a href="/soporte" class="item-link">Soporte y Garantías</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Modelos Principales -->
+      <div class="col-links">
+        <h4 class="tit-col">INSTRUMENTOS</h4>
+        <ul class="lista-foot">
+          <li><a href="/guitarras" class="item-link">VOLTARA V100</a></li>
+          <li><a href="/guitarras" class="item-link">VOLTARA V200</a></li>
+          <li><a href="/guitarras" class="item-link">VOLTARA A200 (Acústica)</a></li>
+          <li><a href="/bajos" class="item-link">VOLTARA B300 (Bajo)</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 4: Contacto -->
+      <div class="col-links">
+        <h4 class="tit-col">CONTACTO</h4>
+        <ul class="lista-foot">
+          <li><a href={`mailto:${sitio.correo}`} class="item-link correo">{sitio.correo}</a></li>
+          {
+            sitio.redes.map((r) => (
+              <li>
+                <a href={r.url} target="_blank" rel="noopener noreferrer" class="item-link">
+                  {r.nombre} &nearr;
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="barra-derechos">
+      <p class="copy">{sitio.pie}</p>
+      <div class="pildoras-sellos">
+        <span class="sello">CONTEMPORÁNEA &bull; ROCKERA &bull; AUDAZ</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .pie-voltara {
+    width: 100%;
+    background-color: #070504;
+    border-top: 1px solid var(--c-borde);
+    margin-top: auto;
+  }
+
+  .contenedor-pie {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 2rem 1.5rem;
+  }
+
+  .columnas-pie {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .logo-foot {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .logo-v {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background-color: var(--c-rojo);
+    color: #ffffff;
+    font-family: var(--font-titulos);
+    font-size: 18px;
+  }
+
+  .logo-txt {
+    font-family: var(--font-titulos);
+    font-size: 26px;
+    letter-spacing: 0.1em;
+    color: var(--c-crema);
+  }
+
+  .eslogan-foot {
+    font-family: var(--font-titulos);
+    font-size: 1.1rem;
+    color: var(--c-rojo);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .desc-foot {
+    font-size: 0.85rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    max-width: 320px;
+  }
+
+  .tit-col {
+    font-size: 1.15rem;
+    color: var(--c-ambar);
+    margin-bottom: 1.2rem;
+  }
+
+  .lista-foot {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .item-link {
+    font-size: 0.85rem;
+    color: var(--c-texto-suave);
+    transition: all 0.2s ease;
+  }
+
+  .item-link:hover {
+    color: var(--c-crema);
+    transform: translateX(4px);
+  }
+
+  .item-link.correo {
+    color: var(--c-rojo);
+    font-weight: 700;
+  }
+
+  .barra-derechos {
+    padding-top: 2rem;
+    border-top: 1px solid var(--c-borde);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .copy {
+    font-size: 0.8rem;
+    color: var(--c-texto-suave);
+  }
+
+  .sello {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    color: var(--c-crema);
+  }
+
+  @media (max-width: 900px) {
+    .columnas-pie {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .columnas-pie {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

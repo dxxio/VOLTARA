@@ -1,0 +1,416 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'centro-soporte-servicio' } = Astro.props;
+
+const servicios = [
+  {
+    titulo: 'Registro de Garantía',
+    badge: 'COBERTURA GLOBAL',
+    descripcion:
+      'Valida tu instrumento con su número de serie oficial y accede a la garantía de fábrica contra defectos de fabricación.',
+    accion: 'REGISTRAR INSTRUMENTO',
+    infoModal: 'Ingresa el número de serie grabado en la pala o placa de mástil para activar tu garantía de por vida en electrónica y maderas.',
+    icono: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+  {
+    titulo: 'Manuales y Diagramas',
+    badge: 'ESQUEMAS TÉCNICOS',
+    descripcion:
+      'Descarga planos de cableado, diagramas de pastillas, especificaciones de alma y manuales de ajuste de todos los modelos.',
+    accion: 'DESCARGAR GUÍAS',
+    infoModal: 'Esquemas en PDF de cableados Stratocaster, Telecaster y Precision Bass disponibles con valores de potenciómetros 250k/500k.',
+    icono: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+  },
+  {
+    titulo: 'Red de Asistencia',
+    badge: 'LUTHIERS CERTIFICADOS',
+    descripcion:
+      'Encuentra centros de servicio autorizados Fender para calibración profesional, nivelación de trastes y repuestos genuinos.',
+    accion: 'LOCALIZAR CENTRO',
+    infoModal: 'Red de talleres certificados con banco de calibración original y repuestos Fender genuinos.',
+    icono: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+  },
+];
+---
+
+<section id={id} class="seccion-soporte-curva">
+  <div class="contenedor">
+    <header class="cabecera">
+      <span class="pildora-roja-borde">SERVICIO TÉCNICO OFICIAL</span>
+      <h1 class="titulo-principal">Soporte Oficial y Asistencia Técnica</h1>
+      <p class="subtitulo">
+        Recursos autorizados para registro de instrumentos, guías de calibración, diagramas técnicos y asistencia directa.
+      </p>
+    </header>
+
+    <!-- Cuadrícula de 3 Tarjetas con bordes de 20px e íconos 100% circulares -->
+    <div class="grid-tarjetas-curvas">
+      {
+        servicios.map((s) => (
+          <article class="tarjeta-soporte-curva">
+            <div class="tarjeta-header">
+              <!-- Ícono en contenedor circular 50% -->
+              <div class="circulo-icono-soporte">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={s.icono} />
+                </svg>
+              </div>
+              <span class="pildora-badge-soporte">{s.badge}</span>
+            </div>
+
+            <div class="tarjeta-body">
+              <h2 class="tarjeta-titulo">{s.titulo}</h2>
+              <p class="tarjeta-desc">{s.descripcion}</p>
+            </div>
+
+            <div class="tarjeta-footer">
+              <button
+                class="btn-pildora-accion-soporte"
+                data-titulo={s.titulo}
+                data-info={s.infoModal}
+                type="button"
+              >
+                <span>{s.accion}</span>
+                <span class="flecha">&rarr;</span>
+              </button>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Módulo de Contacto Redondeado -->
+    <div class="modulo-contacto-redondo">
+      <h2 class="contacto-titulo">¿Requieres asistencia personalizada?</h2>
+      <p class="contacto-desc">
+        Nuestro equipo de especialistas técnicos está disponible para resolver dudas sobre calibración, repuestos y especificaciones oficiales.
+      </p>
+      <a href="mailto:contacto@fender-tribute.com" class="btn-contacto-pildora">
+        <span>ESCRIBIR A SOPORTE</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Diálogo interactivo -->
+  <div id="modal-servicio" class="modal-backdrop" style="display: none;">
+    <div class="modal-card-curva">
+      <div class="modal-header">
+        <h3 id="modal-titulo" class="modal-titulo-txt">Detalle del Servicio</h3>
+        <button id="btn-cerrar-modal" class="btn-cerrar-circular" type="button">&times;</button>
+      </div>
+      <p id="modal-desc" class="modal-desc-txt"></p>
+      <div class="modal-footer">
+        <a href="mailto:contacto@fender-tribute.com" class="btn-pildora-modal">Contactar un Luthier Oficial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .seccion-soporte-curva {
+    width: 100%;
+    background-color: #0F0B09;
+    padding: 5rem 0 6rem 0;
+    color: #F5EADB;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .cabecera {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  .pildora-roja-borde {
+    display: inline-block;
+    padding: 0.45rem 1.15rem;
+    background-color: #1A130F;
+    border: 1px solid #E11D1D;
+    border-radius: 9999px;
+    color: #E11D1D;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin-bottom: 1.25rem;
+  }
+
+  .titulo-principal {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    color: #F5EADB;
+    margin-bottom: 1rem;
+  }
+
+  .subtitulo {
+    font-size: 1.05rem;
+    color: #BFA997;
+    line-height: 1.6;
+  }
+
+  /* Grid con tarjetas curvas de 20px */
+  .grid-tarjetas-curvas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .tarjeta-soporte-curva {
+    background-color: #1A130F;
+    border: 1px solid #453023;
+    border-radius: 20px;
+    padding: 2.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .tarjeta-soporte-curva:hover {
+    transform: translateY(-5px);
+    border-color: #E11D1D;
+    box-shadow: 0 14px 35px rgba(225, 29, 29, 0.25);
+  }
+
+  .tarjeta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Ícono en contenedor circular 50% */
+  .circulo-icono-soporte {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #241A14;
+    border: 1px solid #E11D1D;
+    color: #E11D1D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(225, 29, 29, 0.25);
+  }
+
+  .pildora-badge-soporte {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #BFA997;
+    background-color: #0F0B09;
+    border: 1px solid #453023;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    letter-spacing: 0.08em;
+  }
+
+  .tarjeta-titulo {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #F5EADB;
+    margin-bottom: 0.75rem;
+  }
+
+  .tarjeta-desc {
+    font-size: 0.9rem;
+    color: #BFA997;
+    line-height: 1.6;
+  }
+
+  .tarjeta-footer {
+    padding-top: 1.5rem;
+    border-top: 1px solid #453023;
+    margin-top: 1.5rem;
+  }
+
+  .btn-pildora-accion-soporte {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #F5EADB;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-pildora-accion-soporte:hover {
+    color: #E11D1D;
+    transform: translateX(3px);
+  }
+
+  /* Módulo de Contacto Redondeado */
+  .modulo-contacto-redondo {
+    background: radial-gradient(circle at center, #241A14 0%, #1A130F 100%);
+    border: 1px solid #453023;
+    border-radius: 20px;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .contacto-titulo {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: #F5EADB;
+    margin-bottom: 0.75rem;
+  }
+
+  .contacto-desc {
+    font-size: 0.95rem;
+    color: #BFA997;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .btn-contacto-pildora {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #E11D1D;
+    color: #FFFFFF;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 0.95rem 2.25rem;
+    border-radius: 9999px;
+    box-shadow: 0 6px 20px rgba(225, 29, 29, 0.4);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-contacto-pildora:hover {
+    background-color: #B30808;
+    transform: translateY(-2px);
+  }
+
+  /* Modal Redondeado */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .modal-card-curva {
+    background-color: #1A130F;
+    border: 1px solid #E11D1D;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 100%;
+    padding: 2.25rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid #453023;
+    padding-bottom: 0.75rem;
+  }
+
+  .modal-titulo-txt {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #F5EADB;
+  }
+
+  .btn-cerrar-circular {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #241A14;
+    color: #BFA997;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .btn-cerrar-circular:hover {
+    color: #E11D1D;
+  }
+
+  .modal-desc-txt {
+    font-size: 0.95rem;
+    color: #BFA997;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .btn-pildora-modal {
+    display: block;
+    text-align: center;
+    background-color: #E11D1D;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 9999px;
+  }
+
+  @media (max-width: 900px) {
+    .grid-tarjetas-curvas {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const modal = document.getElementById('modal-servicio');
+  const modalTitulo = document.getElementById('modal-titulo');
+  const modalDesc = document.getElementById('modal-desc');
+  const btnCerrar = document.getElementById('btn-cerrar-modal');
+  const botones = document.querySelectorAll('.btn-pildora-accion-soporte');
+
+  botones.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tit = btn.getAttribute('data-titulo') || 'Servicio Fender';
+      const desc = btn.getAttribute('data-info') || '';
+      if (modal && modalTitulo && modalDesc) {
+        modalTitulo.textContent = tit;
+        modalDesc.textContent = desc;
+        modal.style.display = 'flex';
+      }
+    });
+  });
+
+  if (btnCerrar && modal) {
+    btnCerrar.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  }
+</script>

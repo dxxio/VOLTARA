@@ -1,0 +1,629 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout titulo="VOLTARA | Encuentra tu sonido">
+  <!-- 1. Hero Principal -->
+  <section class="hero-inicio">
+    <div class="contenedor-hero">
+      <div class="hero-texto">
+        <span class="pildora-badge">NUEVA GENERACIÓN DE INSTRUMENTOS</span>
+        <h1 class="hero-h1">Encuentra <span class="txt-rojo">tu sonido</span></h1>
+        <p class="hero-bajada">
+          En VOLTARA forjamos guitarras y bajos con alma rockera y diseño contemporáneo. Cada curva,
+          cada madera y cada pastilla están pensadas para que tu música tenga carácter, presencia y
+          autenticidad.
+        </p>
+        <div class="hero-acciones">
+          <a href="/guitarras" class="btn-rojo-pildora">
+            <span>EXPLORAR GUITARRAS</span>
+            <span class="flecha">&rarr;</span>
+          </a>
+          <a href="/historia" class="btn-madera-pildora">
+            <span>CONOCER LA MARCA</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-marco-visual">
+        <div class="marco-foto-hero">
+          <img
+            src="/imagenes/hero-guitarra.jpg"
+            alt="VOLTARA Guitarra en escena"
+            class="img-hero"
+            loading="eager"
+          />
+          <div class="insignia-hero">
+            <span class="punto-rojo"></span>
+            <span>MAKE YOUR SOUND MATTER</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Instrumentos Destacados -->
+  <section class="seccion-destacados">
+    <div class="contenedor">
+      <div class="cabecera-centro">
+        <span class="pildora-tag">SERIE PRINCIPAL</span>
+        <h2 class="h2-tit">Instrumentos Destacados</h2>
+        <p class="p-sub">
+          Diseñados para músicos audaces que exigen respuesta dinámica y tono contundente.
+        </p>
+      </div>
+
+      <div class="grid-tres">
+        <article class="card-destacada">
+          <div class="marco-foto-card">
+            <img
+              src="/imagenes/stratocaster.jpg"
+              alt="VOLTARA V100"
+              class="img-card"
+              loading="lazy"
+            />
+            <span class="card-tag">ELÉCTRICA</span>
+          </div>
+          <div class="card-info">
+            <h3 class="card-h3">VOLTARA V100</h3>
+            <p class="card-p">
+              Guitarra eléctrica versátil y expresiva. Creada para navegar desde crunch con ataque
+              hasta solos con sustain denso.
+            </p>
+            <a href="/guitarras" class="card-link">VER MODELO &rarr;</a>
+          </div>
+        </article>
+
+        <article class="card-destacada">
+          <div class="marco-foto-card">
+            <img
+              src="/imagenes/telecaster.jpg"
+              alt="VOLTARA V200"
+              class="img-card"
+              loading="lazy"
+            />
+            <span class="card-tag">ELÉCTRICA</span>
+          </div>
+          <div class="card-info">
+            <h3 class="card-h3">VOLTARA V200</h3>
+            <p class="card-p">
+              Guitarra eléctrica de diseño contemporáneo. Líneas afiladas, ergonomía moderna y
+              salida de alta definición para ritmos pesados.
+            </p>
+            <a href="/guitarras" class="card-link">VER MODELO &rarr;</a>
+          </div>
+        </article>
+
+        <article class="card-destacada">
+          <div class="marco-foto-card">
+            <img
+              src="/imagenes/precision-bass.jpg"
+              alt="VOLTARA B300"
+              class="img-card"
+              loading="lazy"
+            />
+            <span class="card-tag ambar">BAJO</span>
+          </div>
+          <div class="card-info">
+            <h3 class="card-h3">VOLTARA B300</h3>
+            <p class="card-p">
+              Diseñado para aportar profundidad, presencia y potencia a cada canción. Graves sólidos
+              y definición articulada.
+            </p>
+            <a href="/bajos" class="card-link">VER BAJO &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Línea de Tiempo Ficticia Resumida -->
+  <section class="seccion-timeline-home">
+    <div class="contenedor">
+      <div class="cabecera-centro">
+        <span class="pildora-tag">EVOLUCIÓN</span>
+        <h2 class="h2-tit">La Ruta de VOLTARA</h2>
+        <p class="p-sub">De una pequeña sala de ensayo a los escenarios de todo el mundo.</p>
+      </div>
+
+      <div class="hitos-mini-grid">
+        <div class="hito-mini">
+          <span class="num-ano">2010</span>
+          <h4>El comienzo</h4>
+          <p>Primeros prototipos buscando un instrumento sin ataduras del pasado.</p>
+        </div>
+        <div class="hito-mini">
+          <span class="num-ano">2014</span>
+          <h4>Primer lanzamiento</h4>
+          <p>Presentación oficial de la serie V100 ante la comunidad independiente.</p>
+        </div>
+        <div class="hito-mini">
+          <span class="num-ano">2019</span>
+          <h4>Ampliación sonora</h4>
+          <p>Llegada de la línea acústica A200 y el bajo insignia B300.</p>
+        </div>
+        <div class="hito-mini destacado">
+          <span class="num-ano rojo">2026</span>
+          <h4>Siguiente capítulo</h4>
+          <p>Innovación en maderas sostenibles y pastillas de alta dinámica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Artistas Destacados -->
+  <section class="seccion-artistas-home">
+    <div class="contenedor">
+      <div class="cabecera-centro">
+        <span class="pildora-tag">COMUNIDAD</span>
+        <h2 class="h2-tit">Artistas que hacen sonar a VOLTARA</h2>
+        <p class="p-sub">
+          Músicos creativos que confían en nuestro tono para definir su propuesta sonora.
+        </p>
+      </div>
+
+      <div class="grid-tres">
+        <div class="card-artista-mini">
+          <div class="marco-foto-mini-art">
+            <img
+              src="/imagenes/artistas/mark-knopfler.jpg"
+              alt="Alex Morgan"
+              class="img-mini-art"
+            />
+          </div>
+          <h3>Alex Morgan</h3>
+          <span class="estilo-tag">Rock Alternativo</span>
+          <p>
+            "La V100 me da la agresividad que necesito en directo sin perder nitidez de acordes."
+          </p>
+        </div>
+        <div class="card-artista-mini">
+          <div class="marco-foto-mini-art">
+            <img src="/imagenes/artistas/bon-jovi.jpg" alt="Daniel Cross" class="img-mini-art" />
+          </div>
+          <h3>Daniel Cross</h3>
+          <span class="estilo-tag">Rock Clásico</span>
+          <p>
+            "Un mástil cómodo y un ataque contundente. VOLTARA respeta la esencia pura del rock."
+          </p>
+        </div>
+        <div class="card-artista-mini">
+          <div class="marco-foto-mini-art">
+            <img
+              src="/imagenes/artistas/david-gilmour.jpg"
+              alt="Mia Sterling"
+              class="img-mini-art"
+            />
+          </div>
+          <h3>Mia Sterling</h3>
+          <span class="estilo-tag">Indie Rock</span>
+          <p>
+            "La acústica A200 tiene la calidez perfecta para componer a altas horas de la noche."
+          </p>
+        </div>
+      </div>
+
+      <div class="centro-btn">
+        <a href="/artistas" class="btn-rojo-pildora">CONOCER A TODOS LOS ARTISTAS &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Cierre Editorial -->
+  <section class="seccion-cierre-editorial">
+    <div class="contenedor">
+      <div class="caja-editorial">
+        <span class="pildora-tag">MANIFIESTO</span>
+        <h2 class="h2-cierre">MAKE YOUR SOUND MATTER</h2>
+        <p class="p-cierre">
+          Creemos en la autenticidad frente a la copia, en la pasión frente a lo genérico y en el
+          poder transformador de una buena canción. Es hora de hacer sonar tu propia voz.
+        </p>
+        <div class="grupo-botones-cierre">
+          <a href="/guitarras" class="btn-rojo-pildora">DESCUBRIR MODELOS</a>
+          <a href="/soporte" class="btn-madera-pildora">CENTRO DE SOPORTE</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero-inicio {
+    width: 100%;
+    background: radial-gradient(circle at 80% 20%, #291811 0%, var(--c-fondo) 70%);
+    padding: 5rem 0 6rem 0;
+    border-bottom: 1px solid var(--c-borde);
+  }
+  .contenedor-hero {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+  .pildora-badge {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo);
+    color: var(--c-crema);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 {
+    font-size: clamp(3rem, 6vw, 5.2rem);
+    line-height: 0.95;
+    color: var(--c-crema);
+    margin-bottom: 1.5rem;
+  }
+  .txt-rojo {
+    color: var(--c-rojo);
+  }
+  .hero-bajada {
+    font-size: 1.05rem;
+    color: var(--c-texto-suave);
+    line-height: 1.7;
+    margin-bottom: 2.25rem;
+    max-width: 540px;
+  }
+  .hero-acciones {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-rojo-pildora {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2.2rem;
+    border-radius: var(--radio-pildora);
+    background: linear-gradient(135deg, var(--c-rojo) 0%, var(--c-rojo-oscuro) 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    box-shadow: 0 6px 20px rgba(230, 25, 25, 0.4);
+    transition: all 0.25s ease;
+  }
+  .btn-rojo-pildora:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(230, 25, 25, 0.6);
+  }
+  .btn-madera-pildora {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 1.8rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    color: var(--c-crema);
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+  }
+  .btn-madera-pildora:hover {
+    border-color: var(--c-rojo);
+    color: var(--c-rojo);
+  }
+
+  .marco-foto-hero {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    border-radius: var(--radio-curvo);
+    overflow: hidden;
+    background-color: var(--c-tarjeta);
+    border: 2px solid var(--c-borde);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  }
+  .img-hero {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .marco-foto-hero:hover .img-hero {
+    transform: scale(1.03);
+  }
+  .insignia-hero {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    background-color: rgba(10, 8, 7, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-pildora);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .punto-rojo {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--c-rojo);
+  }
+
+  /* Secciones comunes */
+  .contenedor {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .cabecera-centro {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3.5rem auto;
+  }
+  .pildora-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo);
+    color: var(--c-rojo);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .h2-tit {
+    font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+    color: var(--c-crema);
+    margin-bottom: 0.75rem;
+  }
+  .p-sub {
+    font-size: 1.05rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+  }
+
+  /* Destacados */
+  .seccion-destacados {
+    background-color: var(--c-fondo);
+    padding: 5.5rem 0;
+    border-bottom: 1px solid var(--c-borde);
+  }
+  .grid-tres {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .card-destacada {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-curvo);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+  }
+  .card-destacada:hover {
+    transform: translateY(-5px);
+    border-color: var(--c-rojo);
+    box-shadow: 0 12px 30px rgba(230, 25, 25, 0.2);
+  }
+  .marco-foto-card {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: var(--c-tarjeta);
+    border: 1px solid var(--c-borde);
+    margin-bottom: 1.25rem;
+  }
+  .img-card {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .card-destacada:hover .img-card {
+    transform: scale(1.05);
+  }
+  .card-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-rojo);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 800;
+  }
+  .card-tag.ambar {
+    background-color: var(--c-ambar);
+  }
+  .card-info {
+    padding: 0.5rem;
+  }
+  .card-h3 {
+    font-size: 1.8rem;
+    color: var(--c-crema);
+    margin-bottom: 0.4rem;
+  }
+  .card-p {
+    font-size: 0.9rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+  .card-link {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--c-rojo);
+    letter-spacing: 0.08em;
+  }
+
+  /* Timeline Home */
+  .seccion-timeline-home {
+    background-color: #0e0b09;
+    padding: 5.5rem 0;
+    border-bottom: 1px solid var(--c-borde);
+  }
+  .hitos-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .hito-mini {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-curvo);
+    padding: 2rem 1.5rem;
+    transition: transform 0.2s ease;
+  }
+  .hito-mini:hover {
+    transform: translateY(-4px);
+    border-color: var(--c-borde-fuerte);
+  }
+  .hito-mini.destacado {
+    border-color: var(--c-rojo);
+  }
+  .num-ano {
+    font-family: var(--font-titulos);
+    font-size: 2.8rem;
+    color: var(--c-ambar);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .num-ano.rojo {
+    color: var(--c-rojo);
+  }
+  .hito-mini h4 {
+    font-size: 1.2rem;
+    color: var(--c-crema);
+    margin-bottom: 0.5rem;
+  }
+  .hito-mini p {
+    font-size: 0.85rem;
+    color: var(--c-texto-suave);
+    line-height: 1.5;
+  }
+
+  /* Artistas Home */
+  .seccion-artistas-home {
+    background-color: var(--c-fondo);
+    padding: 5.5rem 0;
+    border-bottom: 1px solid var(--c-borde);
+  }
+  .card-artista-mini {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde);
+    border-radius: var(--radio-curvo);
+    padding: 2.25rem 1.75rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  .card-artista-mini:hover {
+    transform: translateY(-4px);
+    border-color: var(--c-rojo);
+  }
+  .marco-foto-mini-art {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.25rem auto;
+    border: 2px solid var(--c-rojo);
+    box-shadow: 0 4px 15px rgba(230, 25, 25, 0.35);
+  }
+  .img-mini-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .card-artista-mini h3 {
+    font-size: 1.6rem;
+    color: var(--c-crema);
+    margin-bottom: 0.25rem;
+  }
+  .estilo-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--c-ambar);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .card-artista-mini p {
+    font-size: 0.88rem;
+    color: var(--c-texto-suave);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .centro-btn {
+    text-align: center;
+    margin-top: 3.5rem;
+  }
+
+  /* Cierre Editorial */
+  .seccion-cierre-editorial {
+    padding: 5.5rem 0;
+    background: radial-gradient(circle at center, #24140e 0%, var(--c-fondo) 100%);
+  }
+  .caja-editorial {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde-fuerte);
+    border-radius: var(--radio-curvo);
+    padding: 4rem 2.5rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  }
+  .h2-cierre {
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    color: var(--c-rojo);
+    letter-spacing: 0.08em;
+    margin-bottom: 1.25rem;
+  }
+  .p-cierre {
+    font-size: 1.1rem;
+    color: var(--c-crema);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+  .grupo-botones-cierre {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .contenedor-hero {
+      grid-template-columns: 1fr;
+    }
+    .grid-tres {
+      grid-template-columns: 1fr;
+    }
+    .hitos-mini-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 550px) {
+    .hitos-mini-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

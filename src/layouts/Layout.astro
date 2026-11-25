@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+import Encabezado from "../components/Encabezado.astro";
+import Pie from "../components/Pie.astro";
+import { sitio } from "../datos/sitio";
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const { titulo = `${sitio.nombre} | ${sitio.eslogan}`, descripcion = sitio.descripcion } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={descripcion} />
+    <title>{titulo}</title>
+  </head>
+  <body>
+    <Encabezado />
+    <main class="main-contenedor">
+      <slot />
+    </main>
+    <Pie />
+  </body>
+</html>
+
+<style>
+  .main-contenedor {
+    flex: 1 0 auto;
+    width: 100%;
+  }
+</style>

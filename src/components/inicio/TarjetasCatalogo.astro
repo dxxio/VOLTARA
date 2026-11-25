@@ -1,0 +1,264 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'tarjetas-catalogo' } = Astro.props;
+
+const productos = [
+  {
+    nombre: 'PLAYER TELECASTER®',
+    tipo: 'Electric Guitar',
+    precio: '$799.99',
+    foto: '/imagenes/telecaster.jpg',
+    tono: 'Ataque Cortante',
+    acabado: 'Butterscotch Blonde',
+  },
+  {
+    nombre: 'PLAYER STRATOCASTER®',
+    tipo: 'Electric Guitar',
+    precio: '$799.99',
+    foto: '/imagenes/stratocaster.jpg',
+    tono: 'Crunch & Campana',
+    acabado: 'Sunburst & Candy Apple',
+  },
+  {
+    nombre: 'PLAYER PRECISION BASS®',
+    tipo: 'Electric Bass',
+    precio: '$849.99',
+    foto: '/imagenes/precision-bass.jpg',
+    tono: 'Graves Sísmicos',
+    acabado: 'Onyx Black',
+  },
+];
+---
+
+<section id={id} class="seccion-catalogo-redonda">
+  <div class="contenedor">
+    <div class="cabecera-redonda">
+      <span class="pildora-roja-borde">MODELOS DE LEYENDA</span>
+      <h2 class="titulo-cat">Las Guitarras que Hicieron Historia</h2>
+      <p class="bajada-cat">
+        Bordes redondeados, perfiles de mástil moderno y electrónica de escenario lista para tocar.
+      </p>
+    </div>
+
+    <div class="grid-tres-tarjetas">
+      {
+        productos.map((prod) => (
+          <article class="tarjeta-curva">
+            <!-- Marco de la foto limpio y directo -->
+            <div class="marco-foto-producto">
+              <img
+                src={prod.foto}
+                alt={prod.nombre}
+                class="foto-directa-guit"
+                loading="lazy"
+              />
+              <span class="tag-tono-pildora">{prod.tono}</span>
+            </div>
+
+            <div class="cuerpo-tarjeta">
+              <div class="categoria-fila">
+                <span class="tipo-txt">{prod.tipo}</span>
+                <span class="precio-txt">{prod.precio}</span>
+              </div>
+              <h3 class="nombre-guit">{prod.nombre}</h3>
+              <p class="acabado-txt">Acabado: <strong>{prod.acabado}</strong></p>
+            </div>
+
+            <div class="pie-tarjeta">
+              <a href="/productos" class="btn-rojo-accion">
+                <span>VER DETALLES</span>
+                <span class="flecha">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .seccion-catalogo-redonda {
+    width: 100%;
+    background-color: var(--c-fondo);
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--c-borde-madera);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .cabecera-redonda {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 3.5rem auto;
+  }
+
+  .pildora-roja-borde {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-rojo-fender);
+    color: var(--c-rojo-fender);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  .titulo-cat {
+    font-size: clamp(2rem, 3.6vw, 2.8rem);
+    font-weight: 900;
+    color: var(--c-crema);
+    margin-bottom: 0.75rem;
+  }
+
+  .bajada-cat {
+    font-size: 1rem;
+    color: var(--c-texto-suave);
+    line-height: 1.6;
+  }
+
+  .grid-tres-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .tarjeta-curva {
+    background-color: var(--c-superficie);
+    border: 1px solid var(--c-borde-madera);
+    border-radius: var(--radio-suave);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+
+  .tarjeta-curva:hover {
+    transform: translateY(-5px);
+    border-color: var(--c-rojo-fender);
+    box-shadow: 0 12px 30px rgba(225, 29, 29, 0.2);
+  }
+
+  .marco-foto-producto {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #0F0B09;
+    border: 1px solid #453023;
+    margin-bottom: 1.25rem;
+  }
+
+  /* La foto de la guitarra se muestra directamente sin ninguna capa encima */
+  .foto-directa-guit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .tarjeta-curva:hover .foto-directa-guit {
+    transform: scale(1.05);
+  }
+
+  .tag-tono-pildora {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 3;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    background-color: rgba(15, 11, 9, 0.85);
+    backdrop-filter: blur(4px);
+    border: 1px solid #453023;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+  }
+
+  .cuerpo-tarjeta {
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
+  }
+
+  .categoria-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .tipo-txt {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--c-texto-suave);
+    text-transform: uppercase;
+  }
+
+  .precio-txt {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--c-rojo-fender);
+  }
+
+  .nombre-guit {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--c-crema);
+    margin-bottom: 0.4rem;
+  }
+
+  .acabado-txt {
+    font-size: 0.82rem;
+    color: var(--c-texto-suave);
+  }
+
+  .acabado-txt strong {
+    color: var(--c-crema);
+  }
+
+  .pie-tarjeta {
+    padding-top: 0.75rem;
+  }
+
+  .btn-rojo-accion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radio-pildora);
+    background-color: var(--c-rojo-fender);
+    color: #FFFFFF;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-rojo-accion:hover {
+    background-color: var(--c-rojo-profundo);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .grid-tres-tarjetas {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
